@@ -155,10 +155,12 @@ Set up the foundational project structure so all subsequent modules have a consi
 - [ ] `package.json` created with Jest as the only dev dependency
 - [ ] `.gitignore` updated to exclude `node_modules/`
 - [ ] `README.md` updated with a brief project description and how to run it
+- [ ] `.github/workflows/ci.yml` created — GitHub Actions workflow that runs `npm install && npm test` automatically on every pull request to `main` and on every push to `main` (full CI spec in Issue 2)
 
 **Notes:**
 - No internet connection should be required at runtime — bundle p5.js locally
 - The app must open correctly by double-clicking `index.html` (file:// protocol)
+- CI details (runner, Node version, branch protection) are specified in Issue 2 – Testing Infrastructure; this criterion ensures the workflow file is created as part of the initial project setup
 
 ---
 
@@ -327,3 +329,4 @@ Verify and document that the complete application works with no internet connect
 | 2026-03-19 | Jest + jest-canvas-mock chosen for testing because it runs via Node (dev-only) and is the JS testing standard |
 | 2026-03-19 | GitHub web UI and gh CLI not accessible from automation; issue descriptions written into INSTRUCTIONS.md for manual creation |
 | 2026-03-19 | 7 issues defined covering: setup, testing/CI, circle theorems (interactive + proofs), polygon angles, trigonometry (3 sub-modules), and USB packaging |
+| 2026-03-19 | Issue 1 (Setup) updated: added `.github/workflows/ci.yml` acceptance-criteria step so CI runs on every PR from day one |

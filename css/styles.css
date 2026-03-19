@@ -1,0 +1,190 @@
+/* =====================================================
+   Geometry Visualisation – Base Stylesheet
+   High-contrast, accessible, USB-portable
+   ===================================================== */
+
+/* --- Reset & Box Model --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Root Variables --- */
+:root {
+  --colour-bg: #f5f7fa;
+  --colour-surface: #ffffff;
+  --colour-primary: #1a73e8;
+  --colour-primary-dark: #1558b0;
+  --colour-text: #202124;
+  --colour-text-muted: #5f6368;
+  --colour-border: #dadce0;
+  --colour-accent: #34a853;
+  --font-base: 'Segoe UI', Arial, sans-serif;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --transition: 0.2s ease;
+}
+
+/* --- Base Typography --- */
+html {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--colour-bg);
+  color: var(--colour-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+/* --- Header --- */
+header {
+  background-color: var(--colour-primary);
+  color: #ffffff;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+header .subtitle {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* --- Main Content --- */
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Topic Menu --- */
+.topic-menu h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--colour-text);
+}
+
+.topic-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+/* --- Topic Card --- */
+.topic-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background-color: var(--colour-surface);
+  border: 2px solid var(--colour-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--colour-text);
+  box-shadow: var(--shadow);
+  transition: border-color var(--transition), box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.topic-card:hover,
+.topic-card:focus-visible {
+  border-color: var(--colour-primary);
+  box-shadow: 0 4px 16px rgba(26, 115, 232, 0.2);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.topic-card:focus-visible {
+  outline: 3px solid var(--colour-primary);
+  outline-offset: 2px;
+}
+
+.topic-icon {
+  font-size: 2rem;
+}
+
+.topic-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--colour-primary);
+}
+
+.topic-desc {
+  font-size: 0.9rem;
+  color: var(--colour-text-muted);
+}
+
+/* --- Canvas wrapper (used by sketch pages) --- */
+.canvas-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem 0;
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--colour-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: var(--font-base);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background-color: var(--colour-primary-dark);
+  outline: 3px solid var(--colour-primary);
+  outline-offset: 2px;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.85rem;
+  color: var(--colour-text-muted);
+  border-top: 1px solid var(--colour-border);
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .topic-list {
+    grid-template-columns: 1fr;
+  }
+}

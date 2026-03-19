@@ -99,3 +99,96 @@ describe('isRightAngle', () => {
     expect(isRightAngle(84, 5)).toBe(false);
   });
 });
+
+// ── proofSteps ────────────────────────────────────────────────────────────────
+
+const { getProofSteps, PROOF_STEPS } = require('../js/circleTheorems/proofSteps');
+
+describe('getProofSteps', () => {
+  test('returns an array for each of the 6 theorems', () => {
+    for (let id = 1; id <= 6; id++) {
+      const steps = getProofSteps(id);
+      expect(Array.isArray(steps)).toBe(true);
+    }
+  });
+
+  test('each theorem has at least 5 steps', () => {
+    for (let id = 1; id <= 6; id++) {
+      expect(getProofSteps(id).length).toBeGreaterThanOrEqual(5);
+    }
+  });
+
+  test('each step has a non-empty text string', () => {
+    for (let id = 1; id <= 6; id++) {
+      getProofSteps(id).forEach((step) => {
+        expect(typeof step.text).toBe('string');
+        expect(step.text.trim().length).toBeGreaterThan(0);
+      });
+    }
+  });
+
+  test('each step has a non-empty key string', () => {
+    for (let id = 1; id <= 6; id++) {
+      getProofSteps(id).forEach((step) => {
+        expect(typeof step.key).toBe('string');
+        expect(step.key.trim().length).toBeGreaterThan(0);
+      });
+    }
+  });
+
+  test('first step key for each theorem is "base"', () => {
+    for (let id = 1; id <= 6; id++) {
+      expect(getProofSteps(id)[0].key).toBe('base');
+    }
+  });
+
+  test('last step key for each theorem is "conclusion"', () => {
+    for (let id = 1; id <= 6; id++) {
+      const steps = getProofSteps(id);
+      expect(steps[steps.length - 1].key).toBe('conclusion');
+    }
+  });
+
+  test('conclusion step text contains a check mark or "∴" / "Therefore"', () => {
+    for (let id = 1; id <= 6; id++) {
+      const steps = getProofSteps(id);
+      const conclusion = steps[steps.length - 1].text;
+      const hasMarker =
+        conclusion.includes('\u2713') ||
+        conclusion.includes('\u2234') ||
+        conclusion.toLowerCase().includes('therefore');
+      expect(hasMarker).toBe(true);
+    }
+  });
+
+  test('returns an empty array for an unknown theorem id', () => {
+    expect(getProofSteps(0)).toEqual([]);
+    expect(getProofSteps(7)).toEqual([]);
+    expect(getProofSteps(99)).toEqual([]);
+  });
+
+  test('all 6 theorems are present in PROOF_STEPS', () => {
+    for (let id = 1; id <= 6; id++) {
+      expect(Object.prototype.hasOwnProperty.call(PROOF_STEPS, id)).toBe(true);
+    }
+  });
+
+  test('theorem 1 steps reference isosceles triangles (OAC and OBC)', () => {
+    const steps = getProofSteps(1);
+    const keys = steps.map((s) => s.key);
+    expect(keys).toContain('iso_oac');
+    expect(keys).toContain('iso_obc');
+  });
+
+  test('theorem 3 proof includes a diameter step', () => {
+    const steps = getProofSteps(3);
+    const keys = steps.map((s) => s.key);
+    expect(keys).toContain('diameter');
+  });
+
+  test('theorem 5 proof includes a tangent step', () => {
+    const steps = getProofSteps(5);
+    const keys = steps.map((s) => s.key);
+    expect(keys).toContain('tangent');
+  });
+});

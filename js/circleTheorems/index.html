@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circle Theorems – Geometry Visualisation</title>
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <style>
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.25rem 0 0.75rem;
+    }
+
+    .controls label {
+      font-weight: 600;
+      color: var(--colour-text);
+    }
+
+    .controls select {
+      padding: 0.45rem 0.85rem;
+      border: 2px solid var(--colour-border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: var(--font-base);
+      background: var(--colour-surface);
+      color: var(--colour-text);
+      cursor: pointer;
+    }
+
+    .controls select:focus {
+      outline: 3px solid var(--colour-primary);
+      outline-offset: 2px;
+    }
+
+    .theorem-desc {
+      background: var(--colour-surface);
+      border-left: 4px solid var(--colour-primary);
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: var(--colour-text);
+      min-height: 2.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.25rem;
+    }
+
+    #canvas-container canvas {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: block;
+      touch-action: none;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--colour-text-muted);
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Circle Theorems</h1>
+    <p class="subtitle">Interactive draggable points – explore angle theorems in real time</p>
+  </header>
+
+  <main>
+    <a class="btn back-link" href="../../index.html">&#8592; Back to Topics</a>
+
+    <div class="controls">
+      <label for="theorem-select">Theorem:</label>
+      <select id="theorem-select" aria-label="Select circle theorem">
+        <option value="1">1. Angle at Centre</option>
+        <option value="2">2. Angles in the Same Segment</option>
+        <option value="3">3. Angle in a Semicircle</option>
+        <option value="4">4. Cyclic Quadrilateral</option>
+        <option value="5">5. Tangent–Radius</option>
+        <option value="6">6. Alternate Segment Theorem</option>
+      </select>
+      <button id="reset-btn" class="btn">Reset</button>
+    </div>
+
+    <div id="theorem-description" class="theorem-desc" aria-live="polite"></div>
+
+    <div id="canvas-container" class="canvas-wrapper"></div>
+
+    <p class="hint">Drag the coloured points to explore the theorem. Points always stay on the circumference.</p>
+  </main>
+
+  <footer>
+    <p>Works offline &#8212; no internet connection required.</p>
+  </footer>
+
+  <script src="../../js/lib/p5.min.js"></script>
+  <script src="../../js/common/utils.js"></script>
+  <script src="../../js/common/ui.js"></script>
+  <script src="theorems.js"></script>
+  <script src="sketch.js"></script>
+</body>
+</html>

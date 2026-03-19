@@ -1,0 +1,19 @@
+{
+  "name": "geometry-visualisation",
+  "version": "1.0.0",
+  "description": "Interactive geometry tool for secondary school students (KS2-KS5). Runs offline from a USB drive.",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-canvas-mock": "^2.5.2",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "jest-canvas-mock"
+    ]
+  }
+}

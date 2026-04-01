@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Right-Angled Triangle – Trigonometry</title>
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <style>
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.25rem;
+    }
+
+    #canvas-container canvas {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: block;
+      touch-action: none;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--colour-text-muted);
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Right-Angled Triangle</h1>
+    <p class="subtitle">Explore SOH CAH TOA interactively</p>
+  </header>
+
+  <main>
+    <a class="btn back-link" href="index.html">&#8592; Back to Trigonometry</a>
+
+    <div id="canvas-container" class="canvas-wrapper"></div>
+
+    <p class="hint">Drag the yellow handle to change the angle.</p>
+  </main>
+
+  <footer>
+    <p>Works offline &#8212; no internet connection required.</p>
+  </footer>
+
+  <script src="../../js/lib/p5.min.js"></script>
+  <script src="../../js/common/utils.js"></script>
+  <script src="../../js/common/ui.js"></script>
+  <script src="trigUtils.js"></script>
+  <script src="rightTriangle.js"></script>
+</body>
+</html>

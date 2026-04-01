@@ -147,15 +147,15 @@ The issues below are ready to be created in the GitHub repository. Each one is s
 Set up the foundational project structure so all subsequent modules have a consistent base to build on.
 
 **Acceptance Criteria:**
-- [ ] `index.html` created as the main entry point with a topic selection menu (circle theorems, polygon angles, trigonometry)
-- [ ] `css/styles.css` created with a clean, accessible base stylesheet
-- [ ] `js/lib/p5.min.js` downloaded and committed locally (so the app works offline/from USB)
-- [ ] `js/common/utils.js` created with placeholder exported maths helpers
-- [ ] `js/common/ui.js` created with placeholder shared UI component functions (labels, sliders, reset button)
-- [ ] `package.json` created with Jest as the only dev dependency
-- [ ] `.gitignore` updated to exclude `node_modules/`
-- [ ] `README.md` updated with a brief project description and how to run it
-- [ ] `.github/workflows/ci.yml` created — GitHub Actions workflow that runs `npm install && npm test` automatically on every pull request to `main` and on every push to `main` (full CI spec in Issue 2)
+- [x] `index.html` created as the main entry point with a topic selection menu (circle theorems, polygon angles, trigonometry)
+- [x] `css/styles.css` created with a clean, accessible base stylesheet
+- [x] `js/lib/p5.min.js` downloaded and committed locally (so the app works offline/from USB)
+- [x] `js/common/utils.js` created with placeholder exported maths helpers
+- [x] `js/common/ui.js` created with placeholder shared UI component functions (labels, sliders, reset button)
+- [x] `package.json` created with Jest as the only dev dependency
+- [x] `.gitignore` updated to exclude `node_modules/`
+- [x] `README.md` updated with a brief project description and how to run it
+- [x] `.github/workflows/ci.yml` created — GitHub Actions workflow that runs `npm install && npm test` automatically on every pull request to `main` and on every push to `main` (full CI spec in Issue 2)
 
 **Notes:**
 - No internet connection should be required at runtime — bundle p5.js locally
@@ -174,11 +174,11 @@ Set up the foundational project structure so all subsequent modules have a consi
 Establish a test harness that all module authors can use, and a CI pipeline that runs tests on every pull request.
 
 **Acceptance Criteria:**
-- [ ] `package.json` configured with `"test": "jest"` script
-- [ ] `jest.config.js` (or Jest config in `package.json`) configured with `testEnvironment: "jsdom"` and `jest-canvas-mock` setup
-- [ ] `tests/utils.test.js` created with at least 3 passing tests for maths helpers in `js/common/utils.js` (e.g., `pointOnCircle`, `angleBetweenPoints`, `degreesToRadians`)
-- [ ] `.github/workflows/ci.yml` created: runs `npm install && npm test` on push and pull_request to `main`
-- [ ] All tests pass locally (`npm test`)
+- [x] `package.json` configured with `"test": "jest"` script
+- [x] `jest.config.js` (or Jest config in `package.json`) configured with `testEnvironment: "jsdom"` and `jest-canvas-mock` setup
+- [x] `tests/utils.test.js` created with at least 3 passing tests for maths helpers in `js/common/utils.js` (e.g., `pointOnCircle`, `angleBetweenPoints`, `degreesToRadians`)
+- [x] `.github/workflows/ci.yml` created: runs `npm install && npm test` on push and pull_request to `main`
+- [x] All tests pass locally (`npm test`)
 
 **Notes:**
 - `jest-canvas-mock` is needed because p5.js uses the Canvas API which is not available in jsdom by default
@@ -196,18 +196,18 @@ Establish a test harness that all module authors can use, and a CI pipeline that
 Create an interactive p5.js sketch where students can drag points around a circle and see circle theorem angles update in real time.
 
 **Acceptance Criteria:**
-- [ ] A circle is drawn on screen with a visible centre
-- [ ] Users can place/drag at least 3 points on the circumference
-- [ ] The following theorems are implemented and selectable from a dropdown/menu:
+- [x] A circle is drawn on screen with a visible centre
+- [x] Users can place/drag at least 3 points on the circumference
+- [x] The following theorems are implemented and selectable from a dropdown/menu:
   1. **Angle at centre** – angle at centre = 2 × angle at circumference (same arc)
   2. **Angles in the same segment** – two inscribed angles subtending the same arc are equal
   3. **Angle in a semicircle** – inscribed angle subtending a diameter = 90°
   4. **Cyclic quadrilateral** – opposite angles sum to 180°
   5. **Tangent–radius** – tangent to circle is perpendicular to the radius at the point of contact
   6. **Alternate segment theorem** – angle between tangent and chord equals inscribed angle in alternate segment
-- [ ] Angles are labelled live on-screen as points are dragged
-- [ ] A "Reset" button returns points to default positions
-- [ ] Touch/mouse drag both work
+- [x] Angles are labelled live on-screen as points are dragged
+- [x] A "Reset" button returns points to default positions
+- [x] Touch/mouse drag both work
 
 **Notes:**
 - Points should snap to the circumference when dragged (clamp to circle radius)
@@ -225,12 +225,12 @@ Create an interactive p5.js sketch where students can drag points around a circl
 For each of the 6 circle theorems, provide an animated proof with explanatory text that students can step through at their own pace.
 
 **Acceptance Criteria:**
-- [ ] Each theorem has its own proof screen reachable from the circle theorems menu
-- [ ] Proofs are animated with "Next Step" and "Previous Step" buttons
-- [ ] Each step has an on-screen text explanation (e.g., "Isosceles triangle formed by two radii → base angles are equal")
-- [ ] The construction elements (auxiliary lines, arcs, shading) are drawn incrementally
-- [ ] An "Auto-play" toggle animates through steps automatically with a delay
-- [ ] All 6 theorems from Issue 3 have proofs
+- [x] Each theorem has its own proof screen reachable from the circle theorems menu
+- [x] Proofs are animated with "Next Step" and "Previous Step" buttons
+- [x] Each step has an on-screen text explanation (e.g., "Isosceles triangle formed by two radii → base angles are equal")
+- [x] The construction elements (auxiliary lines, arcs, shading) are drawn incrementally
+- [x] An "Auto-play" toggle animates through steps automatically with a delay
+- [x] All 6 theorems from Issue 3 have proofs
 
 **Notes:**
 - Proofs should use the same colour palette as the interactive sketches for visual consistency
@@ -248,14 +248,14 @@ For each of the 6 circle theorems, provide an animated proof with explanatory te
 Visualise how interior and exterior angles behave as the number of sides of a regular polygon increases, and prove that exterior angles always sum to 360°.
 
 **Acceptance Criteria:**
-- [ ] A slider (or +/– buttons) lets students choose the number of sides (3 to 20)
-- [ ] The regular polygon is drawn and redrawn dynamically as sides change
-- [ ] One interior angle and one exterior angle are highlighted and labelled with their calculated values
-- [ ] Interior angle formula displayed: `(n - 2) × 180° / n`
-- [ ] Exterior angle formula displayed: `360° / n`
-- [ ] An animation "walks" around the polygon exterior, rotating by the exterior angle at each vertex to demonstrate that the total rotation = 360°
-- [ ] A "Walk the perimeter" button triggers the rotation animation
-- [ ] Touch and mouse interaction supported
+- [x] A slider (or +/– buttons) lets students choose the number of sides (3 to 20)
+- [x] The regular polygon is drawn and redrawn dynamically as sides change
+- [x] One interior angle and one exterior angle are highlighted and labelled with their calculated values
+- [x] Interior angle formula displayed: `(n - 2) × 180° / n`
+- [x] Exterior angle formula displayed: `360° / n`
+- [x] An animation "walks" around the polygon exterior, rotating by the exterior angle at each vertex to demonstrate that the total rotation = 360°
+- [x] A "Walk the perimeter" button triggers the rotation animation
+- [x] Touch and mouse interaction supported
 
 **Notes:**
 - For KS2/KS3, label the polygons by name (triangle, quadrilateral, pentagon, … decagon)

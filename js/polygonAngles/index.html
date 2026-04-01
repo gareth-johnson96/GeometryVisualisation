@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polygon Angles – Geometry Visualisation</title>
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <style>
+    .info-panel {
+      background: var(--colour-surface);
+      border-left: 4px solid var(--colour-primary);
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: var(--colour-text);
+      box-shadow: var(--shadow);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.25rem;
+    }
+
+    #canvas-container canvas {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: block;
+      touch-action: none;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--colour-text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .swatch-interior { background: #ea4335; }
+    .swatch-exterior { background: #34a853; }
+    .swatch-walker   { background: #fbbc04; border: 1px solid #b48200; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Polygon Angles</h1>
+    <p class="subtitle">Interior &amp; exterior angles of regular polygons</p>
+  </header>
+
+  <main>
+    <a class="btn back-link" href="../../index.html">&#8592; Back to Topics</a>
+
+    <div class="info-panel">
+      Use the slider to change the number of sides. Press <strong>Walk the perimeter</strong>
+      to see how the exterior angles sum to 360°.
+    </div>
+
+    <div id="canvas-container" class="canvas-wrapper"></div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="swatch swatch-interior"></div>
+        <span>Interior angle</span>
+      </div>
+      <div class="legend-item">
+        <div class="swatch swatch-exterior"></div>
+        <span>Exterior angle</span>
+      </div>
+      <div class="legend-item">
+        <div class="swatch swatch-walker"></div>
+        <span>Walker</span>
+      </div>
+    </div>
+
+    <p class="hint">
+      The interior angle formula is <strong>(n &minus; 2) &times; 180&deg; / n</strong> and
+      the exterior angle formula is <strong>360&deg; / n</strong>.
+    </p>
+  </main>
+
+  <footer>
+    <p>Works offline &#8212; no internet connection required.</p>
+  </footer>
+
+  <script src="../../js/lib/p5.min.js"></script>
+  <script src="../../js/common/utils.js"></script>
+  <script src="../../js/common/ui.js"></script>
+  <script src="polygon.js"></script>
+  <script src="sketch.js"></script>
+</body>
+</html>

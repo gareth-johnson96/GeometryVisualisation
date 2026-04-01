@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circle Theorems – Visual Proofs – Geometry Visualisation</title>
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <style>
+    /* ── Proof-page specific styles ───────────────────────────────────── */
+
+    .proof-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.25rem 0 0.75rem;
+    }
+
+    .proof-controls label {
+      font-weight: 600;
+      color: var(--colour-text);
+    }
+
+    .proof-controls select {
+      padding: 0.45rem 0.85rem;
+      border: 2px solid var(--colour-border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: var(--font-base);
+      background: var(--colour-surface);
+      color: var(--colour-text);
+      cursor: pointer;
+    }
+
+    .proof-controls select:focus {
+      outline: 3px solid var(--colour-primary);
+      outline-offset: 2px;
+    }
+
+    .proof-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .btn-secondary {
+      background-color: var(--colour-surface);
+      color: var(--colour-primary);
+      border: 2px solid var(--colour-primary);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background-color: var(--colour-primary);
+      color: #ffffff;
+    }
+
+    .btn-secondary:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .btn[aria-pressed="true"] {
+      background-color: var(--colour-primary-dark);
+    }
+
+    .step-counter {
+      font-size: 0.9rem;
+      color: var(--colour-text-muted);
+      padding: 0.45rem 0.75rem;
+      background: var(--colour-surface);
+      border: 1px solid var(--colour-border);
+      border-radius: 6px;
+    }
+
+    .proof-step-box {
+      background: var(--colour-surface);
+      border-left: 4px solid var(--colour-primary);
+      border-radius: 0 8px 8px 0;
+      padding: 0.85rem 1.1rem;
+      margin-bottom: 0.85rem;
+      font-size: 1rem;
+      color: var(--colour-text);
+      min-height: 3.5rem;
+      box-shadow: var(--shadow);
+      line-height: 1.55;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.25rem;
+    }
+
+    #proof-canvas-container canvas {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: block;
+      touch-action: none;
+    }
+
+    .keyboard-hint {
+      font-size: 0.8rem;
+      color: var(--colour-text-muted);
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Circle Theorems – Visual Proofs</h1>
+    <p class="subtitle">Step-by-step animated proofs for all 6 circle theorems</p>
+  </header>
+
+  <main>
+    <a class="btn btn-secondary back-link" href="index.html">&#8592; Back to Circle Theorems</a>
+
+    <!-- Theorem selector -->
+    <div class="proof-controls">
+      <label for="proof-theorem-select">Theorem:</label>
+      <select id="proof-theorem-select" aria-label="Select circle theorem proof">
+        <option value="1">1. Angle at Centre</option>
+        <option value="2">2. Angles in the Same Segment</option>
+        <option value="3">3. Angle in a Semicircle</option>
+        <option value="4">4. Cyclic Quadrilateral</option>
+        <option value="5">5. Tangent–Radius</option>
+        <option value="6">6. Alternate Segment Theorem</option>
+      </select>
+    </div>
+
+    <!-- Step explanation -->
+    <div id="proof-step-text" class="proof-step-box" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Navigation buttons -->
+    <div class="proof-nav">
+      <button id="prev-step-btn" class="btn btn-secondary" aria-label="Previous proof step">&#8592; Previous</button>
+      <span id="proof-step-num" class="step-counter" aria-live="polite">&#8212;</span>
+      <button id="next-step-btn" class="btn" aria-label="Next proof step">Next &#8594;</button>
+      <button id="autoplay-btn" class="btn btn-secondary" aria-pressed="false" aria-label="Toggle auto-play">Auto-play</button>
+      <button id="proof-reset-btn" class="btn btn-secondary" aria-label="Restart proof from step 1">Reset</button>
+    </div>
+
+    <!-- Canvas -->
+    <div id="proof-canvas-container" class="canvas-wrapper"></div>
+
+    <p class="keyboard-hint">Keyboard: &#8592;&thinsp;&#8594; arrow keys to step through the proof.</p>
+  </main>
+
+  <footer>
+    <p>Works offline &#8212; no internet connection required.</p>
+  </footer>
+
+  <script src="../../js/lib/p5.min.js"></script>
+  <script src="../../js/common/utils.js"></script>
+  <script src="../../js/common/ui.js"></script>
+  <script src="proofSteps.js"></script>
+  <script src="proofs.js"></script>
+</body>
+</html>
